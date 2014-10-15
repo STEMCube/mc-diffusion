@@ -22,3 +22,11 @@ def test_negative_density():
         energy(argument)
     except ValueError:
         assert True 
+
+def test_nonint_density():
+    """ test with a non-integer element in density vector """
+    argument = [1, 0.5]
+    try:
+        energy(argument)
+    except TypeError:
+        assert True 

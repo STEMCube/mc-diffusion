@@ -12,7 +12,7 @@ def test_energy_known():
 
     arguments = [[2, 3, 4], 2]
     calc_result = energy(arguments[0], arguments[1])
-    true_result = 1
+    true_result = 20
     assert_equal(calc_result, true_result)
 
 def test_negative_density():

@@ -3,10 +3,15 @@ from diffusion_model import energy
 
 def test_energy_known():
     """ test with known result 
-        TODO: use proper floating point comparison
+        TODO: use proper floating point comparison, make a loop to test over all argument pairs (DRY)
     """
-    argument = [2]
-    calc_result = energy(argument)
+    arguments = [[2], []]
+    calc_result = energy(arguments[0])
+    true_result = 1
+    assert_equal(calc_result, true_result)
+
+    arguments = [[2, 3, 4], 2]
+    calc_result = energy(arguments[0], arguments[1])
     true_result = 1
     assert_equal(calc_result, true_result)
 

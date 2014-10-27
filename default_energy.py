@@ -1,4 +1,4 @@
-def energy(density, coeff=1.0):
+def default_energy(density, coeff=1.0):
     """ Energy associated with the diffusion model
 
       Parameters

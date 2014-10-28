@@ -28,6 +28,6 @@ def prob_move(energies, temp):
     if energies[1] <= energies[0]:
         prob = 1
     else:
-        prob = exp( (energies[1] - energies[0]) / temp)
+        prob = exp( -(energies[1] - energies[0]) / temp)
 
     return prob

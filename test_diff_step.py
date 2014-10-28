@@ -60,4 +60,12 @@ def test_invalid_temps():
     except ValueError:
         assert True
 
-#def test_higher_energy():
+def test_higher_energy():
+    """ check probability is in the right range for a higher energy
+    """
+    temp = 1
+    energies = [1, 2]
+
+    prob = prob_move(energies, temp)
+
+    assert_equal( (prob >= 0 and prob <= 1), True )

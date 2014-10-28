@@ -11,7 +11,26 @@ def test_lower_energy():
     assert_equal(prob, 1)
 
 def test_invalid_energies():
+    """ try some invalid energies, which should be rejected out of hand
+    """ 
+    temp = 1
 
-def test_invalid_temps():
+    # array should be length 2
+    energies = [1, 2, 3]
+
+    try:
+        prob_move(energies, temp)
+    except TypeError:
+        assert True
+
+    # entries should be real numbers
+    energies = ["a", 1]
+
+    try:
+        prob_move(energies, temp)
+    except TypeError:
+        assert True
+
+#def test_invalid_temps():
 
 #def test_higher_energy():

@@ -92,3 +92,19 @@ def test_move_particle():
 
     # there is only one possible perturbation here
     assert_equal(move_particle([1, 0, 0]), [0, 1, 0])
+
+def test_diff_step():
+    """ test overall diffusion step gives feasible output
+    """
+    temp = 1
+    sqr = lambda x : x**2
+    energy = lambda x : sum(map(sqr, x))
+
+    density = [1, 0, 0]
+
+    new_density = diff_step(energy, density, temp)
+
+    if new_density==[1, 0, 0] or new_density==[0, 1, 0]:
+        assert True
+    else:
+        raise ValueError, "Output should not be possible."

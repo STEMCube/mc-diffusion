@@ -17,15 +17,17 @@ def diff_step(f_energy, density, temp):
           
     """
 
-    energies[0] = f_energy(density)
+    energies = []
+
+    energies.append(f_energy(density))
 
     density_prop = move_particle(density)
-    energies[1] = f_energy(density_new)
+    energies.append(f_energy(density_prop))
 
     prob_m = prob_move(energies, temp)
 
     # comparison probability... whether to move is a random variable, scaled against this
-    prob_c = random()
+    prob_c = random.random()
 
     if prob_m > prob_c:
         density = density_prop

@@ -1,3 +1,5 @@
+from math import exp
+
 def diff_step(energy, density, temp):
     """ Monte Carlo simulation of diffusion for an arbitrary energy function
 
@@ -19,6 +21,9 @@ def prob_move(energies, temp):
     """
     if len(energies)!=2:
         raise TypeError, "Energies must be an array of length 2"
+
+    if temp <= 0:
+        raise ValueError, "Temperature must be greater than 0"
     
     if energies[1] <= energies[0]:
         prob = 1

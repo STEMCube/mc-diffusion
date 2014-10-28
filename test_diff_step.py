@@ -31,6 +31,33 @@ def test_invalid_energies():
     except TypeError:
         assert True
 
-#def test_invalid_temps():
+def test_invalid_temps():
+    """ try some invalid temps, which should be rejected out of hand
+    """
+    energies = [1, 2]
+
+    temp = [1, 2]
+    try:
+        prob_move(energies, temp)
+    except TypeError:
+        assert True
+
+    temp = "a"
+    try:
+        prob_move(energies, temp)
+    except TypeError:
+        assert True
+
+    temp = -5
+    try:
+        prob_move(energies, temp)
+    except ValueError:
+        assert True
+
+    temp = 0
+    try:
+        prob_move(energies, temp)
+    except ValueError:
+        assert True
 
 #def test_higher_energy():

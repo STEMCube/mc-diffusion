@@ -1,5 +1,5 @@
 from nose.tools import assert_true, assert_equal, assert_not_equal, assert_raises
-from mc_diffusion_step import diff_step, prob_move
+from mc_diffusion_step import *
 
 def test_lower_energy():
     """ second energy is lower, so the proposed move should always be accepted
@@ -75,4 +75,17 @@ def test_move_particle():
         it catches invalid values
     """
 
-    
+    try:
+        move_particle([0, 0, 0, 0])
+    except ValueError:
+        assert True
+
+    try:
+        move_particle([1, -1, 0])
+    except ValueError:
+        assert True
+
+    try: 
+        move_particle([2, 5, "a"])
+    except TypeError:
+        assert True

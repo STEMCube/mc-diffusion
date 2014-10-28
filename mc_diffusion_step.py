@@ -30,7 +30,7 @@ def diff_step(f_energy, density, temp=1):
     # comparison probability... whether to move is a random variable, scaled against this
     prob_c = random.random()
 
-    if prob_m > prob_c:
+    if prob_m >= prob_c:
         density = density_prop
     else:
         pass
@@ -72,19 +72,21 @@ def move_particle(density):
     if all(n==0 for n in density):
         raise ValueError, "All elements of density vector are zero."
 
-    if i==0 and density[i] > 0:
-        density[0] -= 1
-        density[1] += 1
-    elif i==len(density)-1 and density[i] > 0:
-        density[i]   -= 1
-        density[i-1] += 1
-    elif i > 0 and density[i] > 0:
-        l_or_r = random.choice([-1, 1])
-        density[i]          -= 1
-        density[i + l_or_r] += 1 
-    elif density[i]==0:
-        density = move_particle(density)
-    else:
-        raise ValueError, "density has somehow taken an invalid value after initial checks. This should never happen."
+    density_prop = list(density)
 
-    return density
+    if i==0 and density_prop[i] > 0:
+        density_prop[0] -= 1
+        density_prop[1] += 1
+    elif i==len(density_prop)-1 and density_prop[i] > 0:
+        density_prop[i]   -= 1
+        density_prop[i-1] += 1
+    elif i > 0 and density_prop[i] > 0:
+        l_or_r = random.choice([-1, 1])
+        density_prop[i]          -= 1
+        density_prop[i + l_or_r] += 1 
+    elif density_prop[i]==0:
+        density_prop = move_particle(density_prop)
+    else:
+        raise ValueError, "density_prop has somehow taken an invalid value after initial checks. This should never happen."
+
+    return density_prop

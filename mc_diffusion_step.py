@@ -1,7 +1,7 @@
 from math import exp
 import random
 
-def diff_step(f_energy, density, temp):
+def diff_step(f_energy, density, temp=1):
     """ Monte Carlo simulation of diffusion for an arbitrary energy function
 
       Parameters
@@ -14,6 +14,7 @@ def diff_step(f_energy, density, temp):
 
       temp: temperature of diffusion
                 Controls how quickly diffusion happens -- affects how often proposed diffusion steps are taken
+                Default value is 1
           
     """
 

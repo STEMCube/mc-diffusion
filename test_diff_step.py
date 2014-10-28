@@ -89,3 +89,6 @@ def test_move_particle():
         move_particle([2, 5, "a"])
     except TypeError:
         assert True
+
+    # there is only one possible perturbation here
+    assert_equal(move_particle([1, 0, 0]), [0, 1, 0])

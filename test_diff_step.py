@@ -69,3 +69,10 @@ def test_higher_energy():
     prob = prob_move(energies, temp)
 
     assert_equal( (prob >= 0 and prob <= 1), True )
+
+def test_move_particle():
+    """ test particle perturbation is feasible for some known values, and test
+        it catches invalid values
+    """
+
+    

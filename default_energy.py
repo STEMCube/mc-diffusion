@@ -14,7 +14,7 @@ def default_energy(density, coeff=1.0):
 
     for n in density:
         if n < 0:
-            raise ValueError, "All elements of density vector must be negative."
+            raise ValueError, "All elements of density vector must be positive."
         elif not isinstance(n, int):
             raise TypeError, "All elements of density vector should be integers."
         total = total + n * (n-1)

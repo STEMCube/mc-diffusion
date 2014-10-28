@@ -47,6 +47,18 @@ def move_particle(density):
         and moving right is not possible for particles at i=end
     """
     i = random.randint(0, len(density)-1)
+
+    # check density is made from positive integers
+    for n in density:
+        if n < 0:
+            raise ValueError, "All elements of density vector must be positive."
+        elif not isinstance(n, int):
+            raise TypeError, "All elements of density vector should be integers."
+
+    # check density is not zeros vector... need to catch this to prevent infinite recursion 
+    if all(n==0 for n in density):
+        raise ValueError, "All elements of density vector are zero."
+
     if i==0 and density[i] > 0:
         density[0] -= 1
         density[1] += 1
@@ -60,6 +72,6 @@ def move_particle(density):
     elif density[i]==0:
         density = move_particle(density)
     else:
-        raise ValueError, "density appears to have a negative entry."
+        raise ValueError, "density has somehow taken an invalid value after initial checks. This should never happen."
 
     return density

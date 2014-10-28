@@ -18,11 +18,21 @@ def diff_step(f_energy, density, temp):
     """
 
     energies[0] = f_energy(density)
-    density_new = move_particle(density)
 
-    prob = prob_move(energies, temp)
+    density_prop = move_particle(density)
+    energies[1] = f_energy(density_new)
 
+    prob_m = prob_move(energies, temp)
 
+    # comparison probability... whether to move is a random variable, scaled against this
+    prob_c = random()
+
+    if prob_m > prob_c:
+        density = density_prop
+    else:
+        pass
+
+    return density
 
 def prob_move(energies, temp):
     """ return probability of accepting move given different energies and temp
